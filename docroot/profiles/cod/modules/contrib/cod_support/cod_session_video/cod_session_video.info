@@ -1,0 +1,17 @@
+core = "6.x"
+dependencies[] = "content_permissions"
+dependencies[] = "emvideo"
+dependencies[] = "features"
+description = "Adds video to sessions"
+features[content][] = "session-field_video"
+features[user_permission][] = "edit field_video"
+features[user_permission][] = "view field_video"
+name = "COD Session Video"
+package = "COD"
+project = "cod_session_video"
+; Information added by drupal.org packaging script on 2012-08-23
+version = "6.x-1.1"
+core = "6.x"
+project = "cod_support"
+datestamp = "1345751804"
+
