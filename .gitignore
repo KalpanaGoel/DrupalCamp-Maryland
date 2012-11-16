@@ -2,4 +2,5 @@
 docroot/files
 docroot/sites/*/files
 docroot/sites/*/private
-
+docroot/sites/drucampmd
+docroot/sites/drucampmd/*
