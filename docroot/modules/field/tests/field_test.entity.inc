@@ -23,7 +23,7 @@ function field_test_entity_info() {
 
   return array(
     'test_entity' => array(
-      'label' => t('Test Entity'),
+      'name' => t('Test Entity'),
       'fieldable' => TRUE,
       'field cache' => FALSE,
       'base table' => 'test_entity',
@@ -38,7 +38,7 @@ function field_test_entity_info() {
     ),
     // This entity type doesn't get form handling for now...
     'test_cacheable_entity' => array(
-      'label' => t('Test Entity, cacheable'),
+      'name' => t('Test Entity, cacheable'),
       'fieldable' => TRUE,
       'field cache' => TRUE,
       'entity keys' => array(
@@ -50,7 +50,7 @@ function field_test_entity_info() {
       'view modes' => $test_entity_modes,
     ),
     'test_entity_bundle_key' => array(
-      'label' => t('Test Entity with a bundle key.'),
+      'name' => t('Test Entity with a bundle key.'),
       'base table' => 'test_entity_bundle_key',
       'fieldable' => TRUE,
       'field cache' => FALSE,
@@ -63,7 +63,7 @@ function field_test_entity_info() {
     ),
     // In this case, the bundle key is not stored in the database.
     'test_entity_bundle' => array(
-      'label' => t('Test Entity with a specified bundle.'),
+      'name' => t('Test Entity with a specified bundle.'),
       'base table' => 'test_entity_bundle',
       'fieldable' => TRUE,
       'controller class' => 'TestEntityBundleController',
@@ -77,7 +77,7 @@ function field_test_entity_info() {
     ),
     // @see EntityPropertiesTestCase::testEntityLabel()
     'test_entity_no_label' => array(
-      'label' => t('Test entity without label'),
+      'name' => t('Test entity without label'),
       'fieldable' => TRUE,
       'field cache' => FALSE,
       'base table' => 'test_entity',
@@ -90,7 +90,7 @@ function field_test_entity_info() {
       'view modes' => $test_entity_modes,
     ),
     'test_entity_label' => array(
-      'label' => t('Test entity label'),
+      'name' => t('Test entity label'),
       'fieldable' => TRUE,
       'field cache' => FALSE,
       'base table' => 'test_entity',
@@ -104,7 +104,7 @@ function field_test_entity_info() {
       'view modes' => $test_entity_modes,
     ),
     'test_entity_label_callback' => array(
-      'label' => t('Test entity label callback'),
+      'name' => t('Test entity label callback'),
       'fieldable' => TRUE,
       'field cache' => FALSE,
       'base table' => 'test_entity',

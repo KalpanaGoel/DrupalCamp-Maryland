@@ -19,8 +19,6 @@
  *
  *
  * @see template_preprocess_search_results()
- *
- * @ingroup themeable
  */
 ?>
 <?php if ($search_results): ?>

@@ -600,11 +600,8 @@ function theme_image_formatter($variables) {
   $item = $variables['item'];
   $image = array(
     'path' => $item['uri'],
+    'alt' => $item['alt'],
   );
-
-  if (array_key_exists('alt', $item)) {
-    $image['alt'] = $item['alt'];
-  }
 
   if (isset($item['attributes'])) {
     $image['attributes'] = $item['attributes'];
@@ -616,7 +613,7 @@ function theme_image_formatter($variables) {
   }
 
   // Do not output an empty 'title' attribute.
-  if (isset($item['title']) && drupal_strlen($item['title']) > 0) {
+  if (drupal_strlen($item['title']) > 0) {
     $image['title'] = $item['title'];
   }
 
@@ -628,11 +625,9 @@ function theme_image_formatter($variables) {
     $output = theme('image', $image);
   }
 
-  // The link path and link options are both optional, but for the options to be
-  // processed, the link path must at least be an empty string.
-  if (isset($variables['path']['path'])) {
+  if (!empty($variables['path']['path'])) {
     $path = $variables['path']['path'];
-    $options = isset($variables['path']['options']) ? $variables['path']['options'] : array();
+    $options = $variables['path']['options'];
     // When displaying an image inside a link, the html option must be TRUE.
     $options['html'] = TRUE;
     $output = l($output, $path, $options);

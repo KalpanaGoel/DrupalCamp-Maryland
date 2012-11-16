@@ -19,8 +19,8 @@
  * parser; and finally, it is passed to all active processors, which manipulate
  * or store the data.
  *
- * Modules that define this hook can be set as the active fetcher within the
- * configuration page. Only one fetcher can be active at a time.
+ * Modules that define this hook can be set as active fetcher on
+ * admin/config/services/aggregator. Only one fetcher can be active at a time.
  *
  * @param $feed
  *   A feed object representing the resource to be downloaded. $feed->url
@@ -43,9 +43,10 @@ function hook_aggregator_fetch($feed) {
 /**
  * Specify the title and short description of your fetcher.
  *
- * The title and the description provided are shown within the configuration
- * page. Use as title the human readable name of the fetcher and as description
- * a brief (40 to 80 characters) explanation of the fetcher's functionality.
+ * The title and the description provided are shown on
+ * admin/config/services/aggregator among other places. Use as title the human
+ * readable name of the fetcher and as description a brief (40 to 80 characters)
+ * explanation of the fetcher's functionality.
  *
  * This hook is only called if your module implements hook_aggregator_fetch().
  * If this hook is not implemented aggregator will use your module's file name
@@ -74,8 +75,8 @@ function hook_aggregator_fetch_info() {
  * active parser; and finally, it is passed to all active processors which
  * manipulate or store the data.
  *
- * Modules that define this hook can be set as the active parser within the
- * configuration page. Only one parser can be active at a time.
+ * Modules that define this hook can be set as the active parser on
+ * admin/config/services/aggregator. Only one parser can be active at a time.
  *
  * @param $feed
  *   An object describing the resource to be parsed. $feed->source_string
@@ -118,9 +119,10 @@ function hook_aggregator_parse($feed) {
 /**
  * Specify the title and short description of your parser.
  *
- * The title and the description provided are shown within the configuration
- * page. Use as title the human readable name of the parser and as description
- * a brief (40 to 80 characters) explanation of the parser's functionality.
+ * The title and the description provided are shown on
+ * admin/config/services/aggregator among other places. Use as title the human
+ * readable name of the parser and as description a brief (40 to 80 characters)
+ * explanation of the parser's functionality.
  *
  * This hook is only called if your module implements hook_aggregator_parse().
  * If this hook is not implemented aggregator will use your module's file name
@@ -149,8 +151,8 @@ function hook_aggregator_parse_info() {
  * parser; and finally, it is passed to all active processors that manipulate or
  * store the data.
  *
- * Modules that define this hook can be activated as a processor within the
- * configuration page.
+ * Modules that define this hook can be activated as processor on
+ * admin/config/services/aggregator.
  *
  * @param $feed
  *   A feed object representing the resource to be processed. $feed->items
@@ -174,9 +176,10 @@ function hook_aggregator_process($feed) {
 /**
  * Specify the title and short description of your processor.
  *
- * The title and the description provided are shown within the configuration
- * page. Use as title the natural name of the processor and as description a
- * brief (40 to 80 characters) explanation of the functionality.
+ * The title and the description provided are shown most importantly on
+ * admin/config/services/aggregator. Use as title the natural name of the
+ * processor and as description a brief (40 to 80 characters) explanation of the
+ * functionality.
  *
  * This hook is only called if your module implements hook_aggregator_process().
  * If this hook is not implemented aggregator will use your module's file name

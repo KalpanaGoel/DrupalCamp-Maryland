@@ -40,8 +40,6 @@
  *
  * @see template_preprocess_field()
  * @see theme_field()
- *
- * @ingroup themeable
  */
 ?>
 <!--

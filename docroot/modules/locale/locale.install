@@ -202,19 +202,6 @@ function locale_update_7004() {
 }
 
 /**
- * Increase {locales_languages}.formula column's length.
- */
-function locale_update_7005() {
-  db_change_field('languages', 'formula', 'formula', array(
-    'type' => 'varchar',
-    'length' => 255,
-    'not null' => TRUE,
-    'default' => '',
-    'description' => 'Plural formula in PHP code to evaluate to get plural indexes.',
-  ));
-}
-
-/**
  * @} End of "addtogroup updates-7.x-extra".
  */
 
@@ -316,7 +303,7 @@ function locale_schema() {
       ),
       'formula' => array(
         'type' => 'varchar',
-        'length' => 255,
+        'length' => 128,
         'not null' => TRUE,
         'default' => '',
         'description' => 'Plural formula in PHP code to evaluate to get plural indexes.',

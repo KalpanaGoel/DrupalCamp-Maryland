@@ -129,7 +129,8 @@ if (module_exists('taxonomy')) {
       }
       else {
         $instance['widget'] = array(
-          'type' => 'options_select',
+          'type' => 'select',
+          'module' => 'options',
           'settings' => array(),
         );
       }

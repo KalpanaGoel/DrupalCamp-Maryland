@@ -60,8 +60,6 @@
  * @see template_preprocess()
  * @see template_preprocess_search_result()
  * @see template_process()
- *
- * @ingroup themeable
  */
 ?>
 <li class="<?php print $classes; ?>"<?php print $attributes; ?>>

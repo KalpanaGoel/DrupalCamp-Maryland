@@ -167,7 +167,7 @@
  * }
  * @endcode
  *
- * @link http://drupal.org/developing/api/database @endlink
+ * @link http://drupal.org/developing/api/database
  */
 
 
@@ -2769,7 +2769,7 @@ function _db_create_keys_sql($spec) {
  * Renames a table.
  *
  * @param $table
- *   The current name of the table to be renamed.
+ *   The table to be renamed.
  * @param $new_name
  *   The new name for the table.
  */

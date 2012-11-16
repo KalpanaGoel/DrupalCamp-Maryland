@@ -6,8 +6,12 @@ hidden = TRUE
 
 settings[subtheme_override] = subtheme value
 
-; Information added by drupal.org packaging script on 2012-11-07
-version = "7.17"
+; Information added by drupal.org packaging script on 2012-10-17
+version = "7.16"
 project = "drupal"
-datestamp = "1352325357"
+datestamp = "1350508567"
+
+
+; Information added by Acquia.com packaging script
+acquia = "1"
 

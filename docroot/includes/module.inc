@@ -6,7 +6,7 @@
  */
 
 /**
- * Loads all the modules that have been enabled in the system table.
+ * Load all the modules that have been enabled in the system table.
  *
  * @param $bootstrap
  *   Whether to load only the reduced set of modules loaded in "bootstrap mode"
@@ -102,7 +102,7 @@ function module_list($refresh = FALSE, $bootstrap_refresh = FALSE, $sort = FALSE
 }
 
 /**
- * Builds a list of bootstrap modules and enabled modules and themes.
+ * Build a list of bootstrap modules and enabled modules and themes.
  *
  * @param $type
  *   The type of list to return:
@@ -181,7 +181,6 @@ function system_list($type) {
       foreach ($lists['theme'] as $key => $theme) {
         if (!empty($theme->info['base theme'])) {
           // Make a list of the theme's base themes.
-          require_once DRUPAL_ROOT . '/includes/theme.inc';
           $lists['theme'][$key]->base_themes = drupal_find_base_themes($lists['theme'], $key);
           // Don't proceed if there was a problem with the root base theme.
           if (!current($lists['theme'][$key]->base_themes)) {
@@ -219,7 +218,7 @@ function system_list($type) {
 }
 
 /**
- * Resets all system_list() caches.
+ * Reset all system_list() caches.
  */
 function system_list_reset() {
   drupal_static_reset('system_list');
@@ -230,7 +229,7 @@ function system_list_reset() {
 }
 
 /**
- * Determines which modules require and are required by each module.
+ * Find dependencies any level deep and fill in required by information too.
  *
  * @param $files
  *   The array of filesystem objects used to rebuild the cache.
@@ -263,7 +262,7 @@ function _module_build_dependencies($files) {
 }
 
 /**
- * Determines whether a given module exists.
+ * Determine whether a given module exists.
  *
  * @param $module
  *   The name of the module (without the .module extension).
@@ -277,7 +276,7 @@ function module_exists($module) {
 }
 
 /**
- * Loads a module's installation hooks.
+ * Load a module's installation hooks.
  *
  * @param $module
  *   The name of the module (without the .module extension).
@@ -293,7 +292,7 @@ function module_load_install($module) {
 }
 
 /**
- * Loads a module include file.
+ * Load a module include file.
  *
  * Examples:
  * @code
@@ -335,7 +334,8 @@ function module_load_include($type, $module, $name = NULL) {
 }
 
 /**
- * Loads an include file for each module enabled in the {system} table.
+ * Load an include file for each of the modules that have been enabled in
+ * the system table.
  */
 function module_load_all_includes($type, $name = NULL) {
   $modules = module_list();
@@ -503,7 +503,7 @@ function module_enable($module_list, $enable_dependencies = TRUE) {
 }
 
 /**
- * Disables a given set of modules.
+ * Disable a given set of modules.
  *
  * @param $module_list
  *   An array of module names.
@@ -614,7 +614,7 @@ function module_disable($module_list, $disable_dependents = TRUE) {
  */
 
 /**
- * Determines whether a module implements a hook.
+ * Determine whether a module implements a hook.
  *
  * @param $module
  *   The name of the module (without the .module extension).
@@ -643,7 +643,7 @@ function module_hook($module, $hook) {
 }
 
 /**
- * Determines which modules are implementing a hook.
+ * Determine which modules are implementing a hook.
  *
  * @param $hook
  *   The name of the hook (e.g. "help" or "menu").
@@ -744,14 +744,7 @@ function module_implements($hook, $sort = FALSE, $reset = FALSE) {
 }
 
 /**
- * Retrieves a list of hooks that are declared through hook_hook_info().
- *
- * @return
- *   An associative array whose keys are hook names and whose values are an
- *   associative array containing a group name. The structure of the array
- *   is the same as the return value of hook_hook_info().
- *
- * @see hook_hook_info()
+ * Retrieve a list of what hooks are explicitly declared.
  */
 function module_hook_info() {
   // This function is indirectly invoked from bootstrap_invoke_all(), in which
@@ -813,7 +806,7 @@ function module_implements_write_cache() {
 }
 
 /**
- * Invokes a hook in a particular module.
+ * Invoke a hook in a particular module.
  *
  * @param $module
  *   The name of the module (without the .module extension).
@@ -835,7 +828,7 @@ function module_invoke($module, $hook) {
 }
 
 /**
- * Invokes a hook in all enabled modules that implement it.
+ * Invoke a hook in all enabled modules that implement it.
  *
  * @param $hook
  *   The name of the hook to invoke.
@@ -872,13 +865,13 @@ function module_invoke_all($hook) {
  */
 
 /**
- * Returns an array of modules required by core.
+ * Array of modules required by core.
  */
 function drupal_required_modules() {
   $files = drupal_system_listing('/^' . DRUPAL_PHP_FUNCTION_PATTERN . '\.info$/', 'modules', 'name', 0);
   $required = array();
 
-  // An installation profile is required and one must always be loaded.
+  // An install profile is required and one must always be loaded.
   $required[] = drupal_get_profile();
 
   foreach ($files as $name => $file) {
@@ -892,7 +885,7 @@ function drupal_required_modules() {
 }
 
 /**
- * Passes alterable variables to specific hook_TYPE_alter() implementations.
+ * Hands off alterable variables to type-specific *_alter implementations.
  *
  * This dispatch function hands off the passed-in variables to type-specific
  * hook_TYPE_alter() implementations in modules. It ensures a consistent

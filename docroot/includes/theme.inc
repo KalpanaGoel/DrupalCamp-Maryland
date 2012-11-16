@@ -2069,12 +2069,10 @@ function theme_item_list($variables) {
   if (!empty($items)) {
     $output .= "<$type" . drupal_attributes($attributes) . '>';
     $num_items = count($items);
-    $i = 0;
-    foreach ($items as $item) {
+    foreach ($items as $i => $item) {
       $attributes = array();
       $children = array();
       $data = '';
-      $i++;
       if (is_array($item)) {
         foreach ($item as $key => $value) {
           if ($key == 'data') {
@@ -2095,10 +2093,10 @@ function theme_item_list($variables) {
         // Render nested list.
         $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
       }
-      if ($i == 1) {
+      if ($i == 0) {
         $attributes['class'][] = 'first';
       }
-      if ($i == $num_items) {
+      if ($i == $num_items - 1) {
         $attributes['class'][] = 'last';
       }
       $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
@@ -2114,7 +2112,7 @@ function theme_item_list($variables) {
  *
  * @param $variables
  *   An associative array containing:
- *   - url: The URL for the link.
+ *   - url: The url for the link.
  */
 function theme_more_help_link($variables) {
   return '<div class="more-help-link">' . l(t('More help'), $variables['url']) . '</div>';
@@ -2130,7 +2128,7 @@ function theme_more_help_link($variables) {
  *   - title: A descriptive title of the feed.
  */
 function theme_feed_icon($variables) {
-  $text = t('Subscribe to !feed-title', array('!feed-title' => $variables['title']));
+  $text = t('Subscribe to @feed-title', array('@feed-title' => $variables['title']));
   if ($image = theme('image', array('path' => 'misc/feed.png', 'width' => 16, 'height' => 16, 'alt' => $text))) {
     return l($image, $variables['url'], array('html' => TRUE, 'attributes' => array('class' => array('feed-icon'), 'title' => $text)));
   }
@@ -2179,7 +2177,7 @@ function theme_html_tag($variables) {
  *
  * @param $variables
  *   An associative array containing:
- *   - url: The URL of the main page.
+ *   - url: The url of the main page.
  *   - title: A descriptive verb for the link, like 'Read more'.
  */
 function theme_more_link($variables) {

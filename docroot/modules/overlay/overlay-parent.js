@@ -1,8 +1,3 @@
-/**
- * @file
- * Attaches the behaviors for the Overlay parent pages.
- */
-
 (function ($) {
 
 /**
@@ -344,7 +339,7 @@ Drupal.overlay.setFocusBefore = function ($element, document) {
  * Check if the given link is in the administrative section of the site.
  *
  * @param url
- *   The URL to be tested.
+ *   The url to be tested.
  *
  * @return boolean
  *   TRUE if the URL represents an administrative link, FALSE otherwise.
@@ -379,7 +374,7 @@ Drupal.overlay.isAdminLink = function (url) {
  * Determine whether a link is external to the site.
  *
  * @param url
- *   The URL to be tested.
+ *   The url to be tested.
  *
  * @return boolean
  *   TRUE if the URL is external to the site, FALSE otherwise.
@@ -565,7 +560,7 @@ Drupal.overlay.eventhandlerOverrideLink = function (event) {
 
   var target = $target[0];
   var href = target.href;
-  // Only handle links that have an href attribute and use the HTTP(S) protocol.
+  // Only handle links that have an href attribute and use the http(s) protocol.
   if (href != undefined && href != '' && target.protocol.match(/^https?\:/)) {
     var anchor = href.replace(target.ownerDocument.location.href, '');
     // Skip anchor links.
@@ -612,14 +607,7 @@ Drupal.overlay.eventhandlerOverrideLink = function (event) {
       else {
         // Add the overlay-context state to the link, so "overlay-restore" links
         // can restore the context.
-        if ($target[0].hash) {
-          // Leave links with an existing fragment alone. Adding an extra
-          // parameter to a link like "node/1#section-1" breaks the link.
-        }
-        else {
-          // For links with no existing fragment, add the overlay context.
-          $target.attr('href', $.param.fragment(href, { 'overlay-context': this.getPath(window.location) + window.location.search }));
-        }
+        $target.attr('href', $.param.fragment(href, { 'overlay-context': this.getPath(window.location) + window.location.search }));
 
         // When the link has a destination query parameter and that destination
         // is an admin link we need to fragmentize it. This will make it reopen

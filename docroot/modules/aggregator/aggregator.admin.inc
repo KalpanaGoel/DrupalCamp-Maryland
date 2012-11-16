@@ -77,7 +77,7 @@ function aggregator_form_feed($form, &$form_state, stdClass $feed = NULL) {
   $form['url'] = array('#type' => 'textfield',
     '#title' => t('URL'),
     '#default_value' => isset($feed->url) ? $feed->url : '',
-    '#maxlength' => NULL,
+    '#maxlength' => 255,
     '#description' => t('The fully-qualified URL of the feed.'),
     '#required' => TRUE,
   );
